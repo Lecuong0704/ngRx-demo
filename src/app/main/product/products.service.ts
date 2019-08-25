@@ -12,8 +12,14 @@ export class ProductsService {
   public getProducts(): Observable<Product[]> {
     return this.http.get<Product[]>('https://5d33e74dbecf3e0014ae57ab.mockapi.io/products');
   }
-  public deleteProducts(id: number): Observable<Product> {
+  public getProduct(id: number): Observable<Product> {
+    return this.http.get<Product>(`https://5d33e74dbecf3e0014ae57ab.mockapi.io/products/${id}`);
+  }
+  public deleteProduct(id: number): Observable<Product> {
     return this.http.delete<Product>(`https://5d33e74dbecf3e0014ae57ab.mockapi.io/products/${id}`);
+  }
+  public createProduct(product: Product): Observable<Product> {
+    return this.http.post<Product>(`https://5d33e74dbecf3e0014ae57ab.mockapi.io/products`, product);
   }
   
 }

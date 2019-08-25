@@ -38,4 +38,12 @@ export class ProductListComponent implements OnInit {
   public confirmDeleteProduct(product){
     this.store.dispatch(new productAction.DeleteProduct(product.id));
   }
+
+  public editProduct(id){
+    this.router.navigate([`/product-edit/${id}`]);
+  }
+  public createProduct(){
+    this.router.navigate([`/product-create/`]);
+  }
+
 }

@@ -1,1 +1,53 @@
-<p>product-create works!</p>
+<div class="container">
+    <div class="row">
+        <div class="card mt-5 w-100">
+            <div class="card-header">
+                <h4>Tạo mới một sản phẩm</h4>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="addProductForm" (ngSubmit)="onSubmit()">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="w-100">Name:</label>
+                                    <input type="text" class="d-block w-100" placeholder="Ten san pham"
+                                        formControlName="name" />
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="w-100">Price:</label>
+                                    <input type="number" class="d-block w-100" placeholder="Gia ban san pham"
+                                        formControlName="price" />
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label class="w-100">
+                                        Description:
+                                    </label>
+                                    <input type="text" class="d-block w-100" placeholder="Mo ta ngan cho san pham"
+                                        formControlName="description" />
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+        
+                                    <label class="w-100">
+                                        Stock:
+                                    </label>
+                                    <input type="number" class="d-block w-100" placeholder="So luong san pham"
+                                        formControlName="stock" />
+                                </div>
+                            </div>
+                            <div class="col-4 offset-4 text-center mt-3">
+                                <button type="submit" class="btn btn-dark" [disabled]="!addProductForm.valid">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

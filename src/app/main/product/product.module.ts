@@ -10,6 +10,7 @@ import { StoreModule } from '@ngrx/store';
 import { productReducer } from './state/product.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { ProductEffect } from './state/product.effects';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { ProductEffect } from './state/product.effects';
     CommonModule,
     ProductRoutingModule, 
     StoreModule.forFeature('products', productReducer),
-    EffectsModule.forFeature([ProductEffect])
+    EffectsModule.forFeature([ProductEffect]),
+    ReactiveFormsModule
   ]
 })
 export class ProductModule { }

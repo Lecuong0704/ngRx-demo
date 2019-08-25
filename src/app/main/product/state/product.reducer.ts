@@ -55,6 +55,17 @@ export function productReducer(state = initialState, action: productActions.Acti
                 entities: {},
             }
         }
+        case productActions.ProductActionTypes.CREATE_PRODUCT_SUCCESS: {
+            return {
+                ...state,
+            }
+        }
+        case productActions.ProductActionTypes.CREATE_PRODUCT_FAIL: {
+            return {
+                ...state,
+                error: action.payload
+            }
+        }
         default: {
             return state;
         }

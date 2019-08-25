@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { productReducer } from './main/product/state/product.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule,
     EffectsModule.forRoot([]),
-    StoreModule.forRoot({ })
+    StoreModule.forRoot({ }),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
