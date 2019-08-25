@@ -44,6 +44,17 @@ export function productReducer(state = initialState, action: productActions.Acti
                 loaded: false
             }
         }
+        case productActions.ProductActionTypes.DELETE_PRODUCT_SUCCESS: {
+            return productAdapter.removeOne(action.payload, {
+                ...state,
+            });
+        }
+        case productActions.ProductActionTypes.DELETE_PRODUCT_FAIL: {
+            return {
+                ...state,
+                entities: {},
+            }
+        }
         default: {
             return state;
         }

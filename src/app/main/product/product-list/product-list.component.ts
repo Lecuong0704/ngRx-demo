@@ -22,9 +22,20 @@ export class ProductListComponent implements OnInit {
   ngOnInit() {
     this.getProductList();
   }
+
   public getProductList() {
     this.store.dispatch(new productAction.LoadProducts());
     this.products$ = this.store.pipe(select(fromProduct.getProducts));
     this.errors$ = this.store.pipe(select(fromProduct.getError));
+  }
+
+  public deleteProduct(product){
+    const cf = confirm("Ban co chac chan xoa san pham nay?");
+    if(cf){
+      this.confirmDeleteProduct(product);
+    }
+  }
+  public confirmDeleteProduct(product){
+    this.store.dispatch(new productAction.DeleteProduct(product.id));
   }
 }

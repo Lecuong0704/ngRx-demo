@@ -13,7 +13,7 @@ export class ProductEffect {
     private actions$: Actions,
     private productService: ProductsService,
     private router: Router
-  ) {}
+  ) { }
 
   @Effect()
   LoadProducts$: Observable<Action> = this.actions$.pipe(
@@ -30,4 +30,18 @@ export class ProductEffect {
       )
     )
   );
+
+
+
+  @Effect()
+  DeleteProducts$: Observable<Action> = this.actions$.pipe(
+    ofType<productActions.DeleteProduct>(
+      productActions.ProductActionTypes.DELETE_PRODUCT
+    ),
+    map((action: productActions.DeleteProduct) => action.payload),
+    mergeMap((id: number) => this.productService.deleteProducts(id).pipe(
+      map(() => new productActions.DeleteProductSuccess(id)),
+      catchError(err => of(new productActions.DeleteProductFail(err)))
+    ))
+  )
 }
