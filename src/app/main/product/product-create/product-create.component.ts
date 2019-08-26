@@ -24,9 +24,9 @@ export class ProductCreateComponent implements OnInit {
   })
   onSubmit() {
     this.store.dispatch(new productActions.CreateProduct(this.addProductForm.value))
-  //  setTimeout(()=>{
-  //     this.router.navigate(['/'])
-  //   },1000) 
+   setTimeout(()=>{
+      this.router.navigate(['/'])
+    },1000) 
 
   }
 

@@ -21,5 +21,8 @@ export class ProductsService {
   public createProduct(product: Product): Observable<Product> {
     return this.http.post<Product>(`https://5d33e74dbecf3e0014ae57ab.mockapi.io/products`, product);
   }
+  public updateProduct(product: Product): Observable<Product> {
+    return this.http.put<Product>(`https://5d33e74dbecf3e0014ae57ab.mockapi.io/products/${product.id}`, product);
+  }
   
 }

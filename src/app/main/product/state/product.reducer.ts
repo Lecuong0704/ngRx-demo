@@ -66,6 +66,27 @@ export function productReducer(state = initialState, action: productActions.Acti
                 error: action.payload
             }
         }
+        case productActions.ProductActionTypes.LOAD_PRODUCT_SUCCESS: {
+            return productAdapter.addOne(action.payload, {
+                ...state,
+                selectedProductId: action.payload.id
+            });
+        }
+        case productActions.ProductActionTypes.LOAD_PRODUCT_FAIL: {
+            return {
+                ...state,
+                error: action.payload
+            }
+        }
+        case productActions.ProductActionTypes.UPDATE_PRODUCT_SUCCESS: {
+            return productAdapter.updateOne( action.payload , state );
+        }
+        case productActions.ProductActionTypes.UPDATE_PRODUCT_FAIL: {
+            return {
+                ...state,
+                error: action.payload
+            }
+        }
         default: {
             return state;
         }

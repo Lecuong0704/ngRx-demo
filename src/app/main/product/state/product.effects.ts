@@ -57,4 +57,33 @@ export class ProductEffect {
       catchError(err => of(new productActions.CreateProductFail(err)))
     ))
   )
+
+
+  @Effect()
+  LoadProduct$: Observable<Action> = this.actions$.pipe(
+    ofType<productActions.LoadProduct>(
+      productActions.ProductActionTypes.LOAD_PRODUCT
+    ),
+    mergeMap((action: productActions.LoadProduct) => this.productService.getProduct(action.payload).pipe(
+      map((procduct: Product) => new productActions.LoadProductSuccess(procduct)),
+      catchError(err => of(new productActions.LoadProductFail(err)))
+    ))
+  )
+
+  @Effect()
+  UpdateProduct$: Observable<Action> = this.actions$.pipe(
+    ofType<productActions.UpdateProduct>(
+      productActions.ProductActionTypes.UPDATE_PRODUCT
+    ),
+    map((action: productActions.UpdateProduct) => action.payload),
+    mergeMap((procduct: Product) => this.productService.updateProduct(procduct).pipe(
+      map((updatedProduct: Product) => {
+        return new productActions.UpdateProductSuccess({
+          id: updatedProduct.id,
+          changes: updatedProduct
+        });
+      }),
+      catchError(err => of(new productActions.UpdateProductFail(err)))
+    ))
+  )
 }

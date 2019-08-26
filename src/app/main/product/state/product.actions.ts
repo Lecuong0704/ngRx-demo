@@ -1,5 +1,6 @@
 import { Action } from "@ngrx/store";
 import { Product } from "../product.model";
+import { Update } from '@ngrx/entity';
 
 export enum ProductActionTypes {
   LOAD_PRODUCTS = "[Product] Load Products",
@@ -19,7 +20,12 @@ export enum ProductActionTypes {
 
   CREATE_PRODUCT = "[Product] Create Product",
   CREATE_PRODUCT_SUCCESS = "[Product] Create Product Success",
-  CREATE_PRODUCT_FAIL = "[Product] Create Product Fail"
+  CREATE_PRODUCT_FAIL = "[Product] Create Product Fail",
+
+
+  UPDATE_PRODUCT = "[Product] Update Product",
+  UPDATE_PRODUCT_SUCCESS = "[Product] Update Product Success",
+  UPDATE_PRODUCT_FAIL = "[Product] Update Product Fail"
 }
 
 export class LoadProducts implements Action {
@@ -36,6 +42,9 @@ export class LoadProductsFail implements Action {
 
 export class LoadProduct implements Action {
   readonly type = ProductActionTypes.LOAD_PRODUCT;
+  constructor(public payload: number){
+    
+   }
 }
 export class LoadProductSuccess implements Action {
   readonly type = ProductActionTypes.LOAD_PRODUCT_SUCCESS;
@@ -80,6 +89,23 @@ export class CreateProductFail implements Action {
 }
 
 
+export class UpdateProduct implements Action {
+  readonly type = ProductActionTypes.UPDATE_PRODUCT;
+  constructor(public payload: Product){
+   }
+}
+export class UpdateProductSuccess implements Action {
+  readonly type = ProductActionTypes.UPDATE_PRODUCT_SUCCESS;
+  constructor(public payload: Update<Product>){
+    
+   }
+}
+export class UpdateProductFail implements Action {
+  readonly type = ProductActionTypes.UPDATE_PRODUCT_FAIL;
+  constructor(public payload: string){ }
+}
+
+
 
 
 
@@ -97,6 +123,6 @@ export type Action =
 |   LoadProduct
 |   LoadProductFail
 |   LoadProductSuccess
-// |   UpdateProduct
-// |   UpdateProductFail
-// |   UpdateProductSuccess
+|   UpdateProduct
+|   UpdateProductFail
+|   UpdateProductSuccess
