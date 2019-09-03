@@ -1,0 +1,64 @@
+<section class="login-block">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="logo"></div>
+        <form class="md-float-material form-material" name="login_form" [formGroup]="addProductForm" (ngSubmit)="onSubmit() >
+          <div class="card-block">
+            <div class="row m-b-20">
+              <div class="col-md-12">
+                <h3 class="title-login text-uppercase font-weight-bold mt-5 text-center">
+                  Sign In
+                </h3>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-8 offset-md-2 col-sm-12 offset-sm-0 offset-lg-3">
+              <div class="mb-4 form-register">
+                <label>Tài khoản</label>
+                <input class="w-100" type="text" name="email"  required />
+                <!-- [(ngModel)]="user.email" -->
+              </div>
+              <div class="form-register">
+                <label>Mật khẩu</label>
+                <input class="w-100 mb-2" type="password" name="password" required />
+                <!-- [(ngModel)]="user.password" -->
+
+                <span class="font-italic des-pw">Mật khẩu phải chứa từ 6-12 ký tự</span>
+              </div>
+              <div class="row mt-3 text-left">
+                <div class="col-12">
+                  <div class=" text-center">
+                    <a [routerLink]="['/auth/forgot-password']" class=" btn-forgot-password f-w-600">Quên mật khẩu?</a>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-md-12 ">
+                  <button type="submit" class="btn btn-login btn-md btn-block waves-light text-center mb-4 mt-3 ripple">
+                    Đăng nhập
+                  </button>
+                </div>
+                <div class="col-6">
+                  <button type="button" class="btn btn-primary btn-contact-fb w-100" style="background:#4267B2">
+                    Facebook
+                  </button>
+                </div>
+                <div class="col-6">
+                  <button type="button" class="btn btn-danger btn-contact-gmail w-100">
+                    Gmail
+                  </button>
+                </div>
+              </div>
+              <div class="text-center">
+                <div class="btn-register text-center mt-4  pl-4">
+                  Chưa có tài khoản?
+                  <a [routerLink]="['/auth/register']" class="btn-register f-w-600">Đăng ký ngay</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
