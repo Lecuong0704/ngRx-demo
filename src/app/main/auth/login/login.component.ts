@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import * as loginActions from '../auth-state/auth.actions'
+import * as loginReducer from '../auth-state/auth.reducer'
 
 
 @Component({
@@ -9,14 +12,7 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 })
 export class LoginComponent implements OnInit {
 
-  // public store;
-  // public formGroup = 'product';
-  // user = {
-  //   email: '',
-  //   password: ''
-  // };
-
-  constructor() { }
+  constructor(private store: Store<loginReducer.AppState>) { }
 
   accUser = new FormGroup({
     email: new FormControl(''),
@@ -27,13 +23,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit(form) {
-    // let data = {
-    //   email: this.user.email,
-    //   password: this.user.password
-    // };
-    console.log('form', form.value)
-    // this.store.dispatch({ type: LOGIN_REQUESTED, data: data });
+  onSubmit() {
+    this.store.dispatch( new  loginActions.loginRequested( this.accUser.value) );
   }
 
 }
