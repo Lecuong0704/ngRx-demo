@@ -16,6 +16,5 @@ export class loginRequested implements Action {
     readonly type = AuthActionType.LOGIN_REQUESTED
     constructor (public payload: Users ){
         console.log('action', payload);
-        
     }
 }
