@@ -1,11 +1,11 @@
 import { Actions, Effect, ofType } from "@ngrx/effects";
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
 import { Action } from '@ngrx/store';
-import * as authActions from './auth.actions';
-import { dispatch } from 'rxjs/internal/observable/pairs';
-import { mergeMap } from 'rxjs/operators';
+import * as authAction from '../auth-state/auth.actions'
+import { map, mergeMap, catchError } from 'rxjs/operators';
+import { Users } from '../auth.model'
 
 
 
@@ -15,21 +15,25 @@ export class ProductEffect {
         private authService: AuthService,
         private router: Router
     ) { }
-    @Effect()
-    Login$: Observable<Action> = this.actions$.pipe(
-        ofType<authActions.loginRequested>(
-            authActions.AuthActionType.LOGIN_REQUESTED
-        )
-    )
 
-    @Effect()
-    Users$: Observable<Action> = this.actions$.pipe(
-        ofType<authActions.getAllUsers>(
-            authActions.AuthActionType.GET_ALL_USERS
-        ),
-        mergeMap((action :authActions.getAllUsers)=> this.authService.getUsers().pipe(map((Users: Users[])=>
-        )))
-    )
+@Effect()
+GetUsers$ : Observable<Action> = this.actions$.pipe(
+    ofType<authAction.getAllUsers>(
+        authAction.AuthActionType.GET_ALL_USERS
+    ),
+    mergeMap((action: authAction.getAllUsers)=> this.authService.getUsers().pipe(
+        map((Users: Users[])=> new authAction.getAllUsersSuccess(Users)),
+        catchError(err => of(new authAction.getAllUsersFail(err))
+    ))
+)
+
+    // @Effect()
+    // Login$: Observable<Action> = this.actions$.pipe(
+    //     ofType<authAction.loginRequested>(
+    //         authAction.AuthActionType.LOGIN_REQUESTED
+    //      )
+        
+    // )
 
 
 }

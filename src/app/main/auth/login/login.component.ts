@@ -22,8 +22,6 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.store.dispatch( new  loginActions.getAllUsers() );
-    let users = this.store.dispatch( new  loginActions.getAllUsers());
-    console.log('users', users);
   }
 
   onSubmit() {
