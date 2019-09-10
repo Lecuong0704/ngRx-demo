@@ -1,10 +1,9 @@
 import { Product } from '../product.model';
-import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { Router } from '@angular/router';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import * as fromRoot from '../../../state/appState';
 import * as productActions from './product.actions';
-
 
 export interface ProductState extends EntityState<Product> {
     selectedProductId: number | null;

@@ -33,7 +33,8 @@ export class LoadProducts implements Action {
 }
 export class LoadProductsSuccess implements Action {
   readonly type = ProductActionTypes.LOAD_PRODUCTS_SUCCESS;
-  constructor(public payload: Product[]) {}
+  constructor(public payload: Product[]) {
+  }
 }
 export class LoadProductsFail implements Action {
   readonly type = ProductActionTypes.LOAD_PRODUCTS_FAIL;

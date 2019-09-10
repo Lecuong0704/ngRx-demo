@@ -8,6 +8,7 @@ import { productReducer } from './main/product/state/product.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -18,8 +19,11 @@ import { ReactiveFormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     EffectsModule.forRoot([]),
-    StoreModule.forRoot({ }),
-    ReactiveFormsModule
+    StoreModule.forRoot( {}),
+    ReactiveFormsModule,
+    StoreDevtoolsModule.instrument({
+      
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

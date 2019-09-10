@@ -18,6 +18,7 @@ export class ProductListComponent implements OnInit {
     private store: Store<fromProduct.AppState>,
     private router: Router
   ) {}
+  
 
   ngOnInit() {
     this.getProductList();
@@ -28,7 +29,7 @@ export class ProductListComponent implements OnInit {
     this.products$ = this.store.pipe(select(fromProduct.getProducts));
     this.errors$ = this.store.pipe(select(fromProduct.getError));
   }
-
+  
   public deleteProduct(product){
     const cf = confirm("Ban co chac chan xoa san pham nay?");
     if(cf){
