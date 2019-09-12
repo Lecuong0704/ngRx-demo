@@ -47,7 +47,7 @@ export class LoginComponent implements OnInit {
       
       if (this.isCheckLogin) {
         console.log('đăng nhập thành công');
-        this.router.navigate(['/']) 
+        // this.router.navigate(['/']) 
       } else {
         console.log('đăng nhập thất bại');
       }

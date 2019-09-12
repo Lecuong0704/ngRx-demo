@@ -30,7 +30,8 @@
               </button>
             </form> -->
           </div>
-          <a class="text-light font-weight-bold " style="cursor: pointer;" routerLink="/login" routerLinkActive="router-link-active" >LOGIN</a>
+          <a *ngIf="!(checkLogin$ | async)" class="text-light font-weight-bold " style="cursor: pointer;" routerLink="/login" routerLinkActive="router-link-active" >LOGIN</a>
+          <a *ngIf="checkLogin$ | async" class="text-light font-weight-bold " style="cursor: pointer;" routerLink="/login" routerLinkActive="router-link-active" >LOGUOT</a>
         </nav>
       </div>
     </div>

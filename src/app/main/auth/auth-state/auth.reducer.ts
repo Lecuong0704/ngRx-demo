@@ -12,9 +12,6 @@ export interface UsersState {
     checkLogin: boolean;
 }
 
-// const initialState: UsersState = {
-//     entities: []
-// };
 export const userAdapter: EntityAdapter<User> = createEntityAdapter<User>();
 
 export const defaultUser: UsersState = {
@@ -40,7 +37,7 @@ export function usersReducer(state = initialState, action: authActions.Action): 
             }
         }
         default: {
-            return state;
+            return state
         }
     }
 }
@@ -48,7 +45,7 @@ export function usersReducer(state = initialState, action: authActions.Action): 
 
 
 export const getUsersFeatureState = createFeatureSelector<UsersState>('Users');
-export const selectCheckLogin = createSelector(getUsersFeatureState, (state: UsersState)=> state.checkLogin);
+export const selectCheckLogin =createSelector(getUsersFeatureState,(state: UsersState) => state.checkLogin);
 // export const getError = createSelector(getUsersFeatureState, (state: UsersState) => state.error);
 // export const getUsersLoading = createSelector(getUsersFeatureState, (state: UsersState) => state.loading);
 // export const getUsersLoaded = createSelector(getUsersFeatureState, (state: UsersState) => state.loaded);
