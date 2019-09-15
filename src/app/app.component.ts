@@ -12,9 +12,12 @@ import { Observable } from 'rxjs';
 export class AppComponent implements OnInit {
   title = 'ngRx-demo';
   public checkLogin$: Observable<boolean> 
-  constructor( private store: Store<userState.UsersState>){}
+  constructor( private store: Store<userState.UsersState>){
+  }
   ngOnInit(): void {
     // throw new Error("Method not implemented.");
     this.checkLogin$ = this.store.pipe(select(authReducer.selectCheckLogin));
+  }
+  ngDoCheck(){
   }
 }

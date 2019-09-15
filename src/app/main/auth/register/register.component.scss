@@ -1,0 +1,66 @@
+.login-block {
+    background-color: #fafafa;
+    // min-height: 100vh;
+    margin: 0;
+    padding-top: 50px;
+    font-size: 1rem;
+    .logo {
+      img {
+        width: 200px;
+      }
+    }
+    .title-login {
+      color: #28a745;
+    }
+    .btn-login {
+      background-color: #28a745;
+      color: #fff;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .btn-contact-gmail {
+      font-weight: 600;
+      background-color: #e31e27;
+      font-size: 1rem;
+    }
+    .btn-contact-fb {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    .btn-forgot-password {
+      color: rgb(119, 119, 119);
+      font-size: 1rem;
+      &:hover {
+        color: #28a745;
+      }
+    }
+    .btn-register {
+      color: rgb(119, 119, 119);
+      font-size: 1rem;
+      a {
+        color: #2b2b2b;
+        font-weight: 600;
+        font-size: 1rem;
+        &:hover {
+          color: #28a745;
+        }
+      }
+    }
+    .form-register {
+      label {
+        color: #2b2b2b;
+        font-weight: 600;
+      }
+      input {
+        border-radius: 4px;
+        border: 1px solid rgb(119, 119, 119);
+        line-height: 35px;
+        padding: 0 15px;
+      }
+      .des-pw{
+          color: rgb(119, 119, 119);
+          font-size: 1rem;
+      }
+    }
+  }
+  

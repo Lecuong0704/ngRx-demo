@@ -1,15 +1,41 @@
 <div class="container">
     <div class="row">
-        <div class="col-12">
+        <!-- <div class="col-12">
             <div class="row">
-                <h4 class="mt-3 mb-3">1. List Products</h4>
+                <h5 class="mt-3 mb-3">1. List Products</h5>
             </div>
-        </div>
+        </div> -->
         <div class="col-12 btn-create mt-3 mb-3 ">
             <button class="btn btn-success float-right" (click)=createProduct()>Create</button>
         </div>
+        <div class="col-4" *ngFor="let product of products$ | async; let i = index" id="product{{ i }}">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h6>{{ i + 1 }}. {{ product.name }}</h6>
+                </div>
+                <div class="card-body">
+                    <img src="{{ product.image }}" class="w-100" alt="">
+                    <p class="description">Description: {{ product.description }}</p>
+                    <div class="row">
+                        <p class="col-6 text-center"><strong> Stock:</strong> {{ product.stock }}</p>
+                        <p class="col-6 text-center"> <strong>Price:</strong> {{ product.price }} $ </p>
 
-        <table class="table table-bordered">
+                    </div>
+                </div>
+                <div class="card-footer text-center">
+                    <button class="btn btn-primary btn-sm ml-2">
+                        <i class="fa fa-eye"></i>
+                    </button>
+                    <button (click)="editProduct(product.id)" class="btn btn-sm btn-warning ml-2">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                    <button (click)="deleteProduct(product, i)" class="btn btn-sm btn-danger ml-2">
+                        <i class="fa fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- <table class="table table-bordered">
             <thead class="text-center">
                 <tr>
                     <th>Stt</th>
@@ -20,7 +46,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let product of products$ | async; let i = index">
+                <tr *ngFor="let product of products$ | async; let i = index" id="product{{ i }}">
                     <td>{{ i + 1 }}</td>
                     <td>{{ product.name }}</td>
                     <td class="text-center">{{ product.stock }}</td>
@@ -32,12 +58,13 @@
                         <button (click)="editProduct(product.id)" class="btn btn-sm btn-warning ml-2">
                             <i class="fa fa-pencil"></i>
                         </button>
-                        <button (click)="deleteProduct(product)" class="btn btn-sm btn-danger ml-2">
+                        <button (click)="deleteProduct(product, i)" class="btn btn-sm btn-danger ml-2">
                             <i class="fa fa-trash"></i>
                         </button>
                     </td>
                 </tr>
             </tbody>
-        </table>
+        </table> -->
+
     </div>
 </div>

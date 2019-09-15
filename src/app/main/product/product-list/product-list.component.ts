@@ -6,10 +6,12 @@ import { Observable } from "rxjs";
 import { Product } from "../product.model";
 import { Store, select } from "@ngrx/store";
 
+
 @Component({
   selector: "app-product-list",
   templateUrl: "./product-list.component.html",
   styleUrls: ["./product-list.component.scss"]
+  
 })
 export class ProductListComponent implements OnInit {
   products$: Observable<Product[]>;
@@ -30,14 +32,21 @@ export class ProductListComponent implements OnInit {
     this.errors$ = this.store.pipe(select(fromProduct.getError));
   }
   
-  public deleteProduct(product){
+  public deleteProduct(product, index){
     const cf = confirm("Ban co chac chan xoa san pham nay?");
     if(cf){
-      this.confirmDeleteProduct(product);
+      this.confirmDeleteProduct(product,index);
     }
   }
-  public confirmDeleteProduct(product){
-    this.store.dispatch(new productAction.DeleteProduct(product.id));
+  public confirmDeleteProduct(product, index){
+    let productSelect = document.querySelector(`#product${index}`);
+    console.log('productSelect',productSelect);
+    
+    productSelect.classList.add('hinge');
+    setTimeout(()=>{
+      productSelect.classList.add('d-none')
+      this.store.dispatch(new productAction.DeleteProduct(product.id));
+    },2000)
   }
 
   public editProduct(id){

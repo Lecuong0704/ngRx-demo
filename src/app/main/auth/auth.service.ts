@@ -12,4 +12,7 @@ export class AuthService {
   public getUsers(): Observable<User[]> {
     return this.http.get<User[]>('https://5d33e74dbecf3e0014ae57ab.mockapi.io/Users');
   }
+  public createUser(user): Observable<User> {
+    return this.http.post<User>('https://5d33e74dbecf3e0014ae57ab.mockapi.io/Users', user);
+  }
 }

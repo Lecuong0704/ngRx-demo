@@ -8,7 +8,7 @@ const routes: Routes = [
     loadChildren: './product/product.module#ProductModule'
   },
   {
-    path: 'login',
+    path: 'auth',
     loadChildren: './auth/auth.module#AuthModule'
   }
 ];

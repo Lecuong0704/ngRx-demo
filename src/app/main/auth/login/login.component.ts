@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import * as loginActions from '../auth-state/auth.actions'
 import * as loginReducer from '../auth-state/auth.reducer'
 import { Observable } from 'rxjs';
@@ -20,14 +20,15 @@ export class LoginComponent implements OnInit {
 
 
   constructor(private authService: AuthService,private _store:Store<loginReducer.UsersState>,private router:Router) { }
-
   accUser = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
   })
 
 
-  ngOnInit() {}
+  ngOnInit() {
+  
+  }
 
   onSubmit() {
     const accUser = this.accUser

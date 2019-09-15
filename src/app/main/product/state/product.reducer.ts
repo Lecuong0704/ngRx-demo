@@ -40,7 +40,8 @@ export function productReducer(state = initialState, action: productActions.Acti
                 ...state,
                 entities: {},
                 loading: false,
-                loaded: false
+                loaded: false,
+                
             }
         }
         case productActions.ProductActionTypes.DELETE_PRODUCT_SUCCESS: {

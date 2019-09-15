@@ -23,15 +23,9 @@
                 <a class="nav-link"  href="#">Help</a>
               </li>
             </ul>
-            <!-- <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="search" placeholder="Search" />
-              <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-                Search
-              </button>
-            </form> -->
           </div>
-          <a *ngIf="!(checkLogin$ | async)" class="text-light font-weight-bold " style="cursor: pointer;" routerLink="/login" routerLinkActive="router-link-active" >LOGIN</a>
-          <a *ngIf="checkLogin$ | async" class="text-light font-weight-bold " style="cursor: pointer;" routerLink="/login" routerLinkActive="router-link-active" >LOGUOT</a>
+          <a *ngIf="!(checkLogin$ | async)" class="text-light font-weight-bold " style="cursor: pointer;" routerLink="/auth/login" routerLinkActive="router-link-active" >LOGIN</a>
+          <a *ngIf="checkLogin$ | async" class="text-light font-weight-bold " style="cursor: pointer;" routerLink="/auth/login" routerLinkActive="router-link-active" >LOGUOT</a>
         </nav>
       </div>
     </div>
