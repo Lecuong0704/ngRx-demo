@@ -5,6 +5,8 @@ import { Router } from "@angular/router";
 import { Observable } from "rxjs";
 import { Product } from "../product.model";
 import { Store, select } from "@ngrx/store";
+import { AppState } from '../../../state/appState';
+import * as fromApp from "../../../state/appState"
 
 
 @Component({
@@ -17,7 +19,7 @@ export class ProductListComponent implements OnInit {
   products$: Observable<Product[]>;
   errors$: Observable<String>;
   constructor(
-    private store: Store<fromProduct.AppState>,
+    private store: Store<AppState>,
     private router: Router
   ) {}
   

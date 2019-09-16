@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import * as userState  from './main/auth/auth-state/auth.reducer';
 import *  as authReducer from './main/auth/auth-state/auth.reducer';
 import { Observable } from 'rxjs';
+import * as App  from './state/appState';
 
 @Component({
   selector: 'app-root',
@@ -11,13 +12,19 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent implements OnInit {
   title = 'ngRx-demo';
-  public checkLogin$: Observable<boolean> 
-  constructor( private store: Store<userState.UsersState>){
+  checkLogin$: Observable<boolean>
+  constructor( private store: Store<App.AppState>){
+
   }
   ngOnInit(): void {
-    // throw new Error("Method not implemented.");
-    this.checkLogin$ = this.store.pipe(select(authReducer.selectCheckLogin));
+    // let checkLogin = this.store.pipe(select(authReducer.selectCheckLogin));
+    // checkLogin.subscribe((data)=> this.checkLogin$ = data)
+  }
+  ngAfterViewUnit(){
+    this.checkLogin$ = this.store.pipe(select(App.selectCheckLogin));
+
   }
   ngDoCheck(){
+    
   }
 }

@@ -19,7 +19,7 @@ import { RegisterComponent } from './register/register.component';
     AuthRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    StoreModule.forFeature('Users', usersReducer),
+    StoreModule.forFeature('users', usersReducer),
     EffectsModule.forFeature([UsersEffect])
 
   ]

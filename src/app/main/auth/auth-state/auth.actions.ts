@@ -16,7 +16,6 @@ export enum AuthActionType {
     CHECK_REGISTER_SUCCESS = 'CHECK_REGISTER_SUCCESS',
     CHECK_REGISTER_FAIL = 'CHECK_REGISTER_FAIL',
 
-   
     CHECK_LOGIN = 'CHECK_LOGIN',
     LOGOUT = 'LOGOUT'
 }
@@ -24,9 +23,7 @@ export enum AuthActionType {
 
 export class checkLogin implements Action {
     readonly type = AuthActionType.CHECK_LOGIN
-    constructor (public payload: User ){
-        // console.log('action', payload);
-    }
+    constructor (public payload: User ){}
 }
 export class logout implements Action {
     readonly type = AuthActionType.LOGOUT

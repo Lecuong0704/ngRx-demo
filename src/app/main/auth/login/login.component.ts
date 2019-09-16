@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
-import * as loginActions from '../auth-state/auth.actions'
-import * as loginReducer from '../auth-state/auth.reducer'
+import * as authActions from '../auth-state/auth.actions'
+import * as authReducer from '../auth-state/auth.reducer'
 import { Observable } from 'rxjs';
 import { User } from '../auth.model';
 import { AuthService } from '../auth.service';
@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   public isCheckLogin: boolean = false;
 
 
-  constructor(private authService: AuthService,private _store:Store<loginReducer.UsersState>,private router:Router) { }
+  constructor(private authService: AuthService,private _store:Store<authReducer.UsersState>,private router:Router) { }
   accUser = new FormGroup({
     email: new FormControl(''),
     password: new FormControl(''),
@@ -27,7 +27,6 @@ export class LoginComponent implements OnInit {
 
 
   ngOnInit() {
-  
   }
 
   onSubmit() {
@@ -37,7 +36,7 @@ export class LoginComponent implements OnInit {
       res.filter( (el) => {
         if(el.email == accUser.value.email && el.password == accUser.value.password){
           this.isCheckLogin = true;
-          store.dispatch(new loginActions.checkLogin({
+          store.dispatch(new authActions.checkLogin({
             id: el.id,
             name: el.name,
             email: el.email,

@@ -11,9 +11,6 @@ export interface ProductState extends EntityState<Product> {
     loaded: boolean;
     error: string;
 }
-export interface AppState extends fromRoot.AppState {
-    products: ProductState;
-}
 export const productAdapter: EntityAdapter<Product> = createEntityAdapter<Product>();
 
 
@@ -93,7 +90,7 @@ export function productReducer(state = initialState, action: productActions.Acti
     }
 }
 
-const getProductFeatureState = createFeatureSelector<ProductState>('products');
+export const getProductFeatureState = createFeatureSelector<ProductState>('products');
 export const getProducts = createSelector(getProductFeatureState, productAdapter.getSelectors().selectAll);
 export const getError = createSelector(getProductFeatureState, (state: ProductState) => state.error);
 export const getProductsLoading = createSelector(getProductFeatureState, (state: ProductState) => state.loading);

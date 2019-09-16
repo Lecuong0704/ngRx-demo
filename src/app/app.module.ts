@@ -10,26 +10,23 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { storeLogger } from 'ngrx-store-logger';
-
-// export function logger(reducer: ActionReducer<State>): any {
-//   // default, no options
-//   return storeLogger()(reducer);
-// }
+import { usersReducer } from './main/auth/auth-state/auth.reducer';
+import { productReducer } from './main/product/state/product.reducer';
+import { appReducer } from './state/appState';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
     HttpClientModule,
     EffectsModule.forRoot([]),
-    StoreModule.forRoot({}),
+    StoreModule.forRoot({app: appReducer}),
     FormsModule,
     ReactiveFormsModule,
+    BrowserModule,
+    AppRoutingModule,
     StoreDevtoolsModule.instrument({
       
     })

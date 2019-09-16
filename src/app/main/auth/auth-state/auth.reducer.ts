@@ -5,12 +5,10 @@ import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import * as fromRoot from '../../../state/appState';
 import * as authActions from '../auth-state/auth.actions';
 import * as authReducer from '../auth-state/auth.reducer'
-import { Injectable } from '@angular/core';
 
 
-Injectable()
 export interface UsersState extends EntityState<User> {
-    loaded : boolean;
+    isLogin : boolean;
     error : string 
 }
 
@@ -19,11 +17,10 @@ export const userAdapter: EntityAdapter<User> = createEntityAdapter<User>();
 export const defaultUser: UsersState = {
     ids: [],
     entities: {},
-    loaded: false,
+    isLogin: false,
     error:''
 }
 export const initialState = userAdapter.getInitialState(defaultUser);
-
 export function usersReducer(state = initialState, action: authActions.Action ): UsersState {
     switch (action.type) {
         case authActions.AuthActionType.CHECK_LOGIN: {
@@ -31,7 +28,7 @@ export function usersReducer(state = initialState, action: authActions.Action ):
             return {
                 ids: state.ids,
                 entities: {...state.entities, user},
-                loaded : true,
+                isLogin : true,
                 error:''
             }
         }
@@ -40,7 +37,7 @@ export function usersReducer(state = initialState, action: authActions.Action ):
                 ...state,
                 ids: state.ids,
                 entities: {},
-                loaded : false,
+                isLogin : false,
                 error:''
             }
         }
@@ -70,11 +67,11 @@ export function usersReducer(state = initialState, action: authActions.Action ):
 
 
 
-export const getUsersFeatureState = createFeatureSelector<UsersState>('Users');
-export const selectCheckLogin = (state: UsersState) => state.loaded;
+export const getUsersFeatureState = createFeatureSelector<UsersState>('users');
+// export const selectCheckLogin = createSelector(getUsersFeatureState, (state: UsersState) => state.isLogin);
 // export const getError = createSelector(getUsersFeatureState, (state: UsersState) => state.error);
 // export const getUsersLoading = createSelector(getUsersFeatureState, (state: UsersState) => state.loading);
-// export const getUsersLoaded = createSelector(getUsersFeatureState, (state: UsersState) => state.loaded);
+// export const getUsersisLogin = createSelector(getUsersFeatureState, (state: UsersState) => state.loaded);
 // export const getCurrentUserId = createSelector(getUsersFeatureState, (state: UsersState) => state.selectedUsersId);
 // export const getCurrentUser = createSelector(getUsersFeatureState, (state: UsersState) => state.entities[state.selectedUsersId]);
 

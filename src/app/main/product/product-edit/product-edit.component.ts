@@ -2,8 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store, Action } from '@ngrx/store';
 import * as fromProduct from '../state/product.reducer';
+import * as fromApp from "../../../state/appState"
 import * as productAction from '../state/product.actions';
 import { Router, ActivatedRoute } from '@angular/router';
+import { AppState } from '../../../state/appState';
 
 @Component({
   selector: 'app-product-edit',
@@ -24,7 +26,7 @@ export class ProductEditComponent implements OnInit {
     private formBuilder: FormBuilder,
     public activatedRoute: ActivatedRoute,
     private router: Router,
-    private store: Store<fromProduct.AppState>
+    private store: Store<AppState>
    ) { }
 
   ngOnInit() {
