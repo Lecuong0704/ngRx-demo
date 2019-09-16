@@ -4,7 +4,7 @@ import { createFeatureSelector, createSelector, Store } from '@ngrx/store';
 import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import * as fromRoot from '../../../state/appState';
 import * as authActions from '../auth-state/auth.actions';
-import * as authReducer from '../auth-state/auth.reducer'
+import { Inject, Injectable } from '@angular/core';
 
 
 export interface UsersState extends EntityState<User> {
@@ -68,7 +68,7 @@ export function usersReducer(state = initialState, action: authActions.Action ):
 
 
 export const getUsersFeatureState = createFeatureSelector<UsersState>('users');
-// export const selectCheckLogin = createSelector(getUsersFeatureState, (state: UsersState) => state.isLogin);
+export const selectCheckLogin = createSelector(getUsersFeatureState, (state: UsersState) => state);
 // export const getError = createSelector(getUsersFeatureState, (state: UsersState) => state.error);
 // export const getUsersLoading = createSelector(getUsersFeatureState, (state: UsersState) => state.loading);
 // export const getUsersisLogin = createSelector(getUsersFeatureState, (state: UsersState) => state.loaded);

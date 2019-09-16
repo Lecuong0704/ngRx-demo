@@ -12,7 +12,7 @@ export interface AppState {
 }
 const appState = {
     products: productReducer,
-    users:usersReducer
+    users: usersReducer
 }
 
 const developmentReducer = compose(storeFreeze, combineReducers)(appState);
@@ -28,7 +28,7 @@ export function appReducer(state: any, action: any) {
 
 
 export const getAppFeatureState = createFeatureSelector<AppState>('App');
-export const selectCheckLogin = createSelector(getAppFeatureState, (state: AppState) => state.users.isLogin);
+// export const selectCheckLogin = createSelector(getAppFeatureState, (state: AppState) => state.users.isLogin);
 
 
 // export function appReducer(state = initialState): AppState {

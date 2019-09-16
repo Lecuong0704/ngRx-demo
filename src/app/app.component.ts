@@ -1,30 +1,34 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, Injectable } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import * as userState  from './main/auth/auth-state/auth.reducer';
+import * as userState from './main/auth/auth-state/auth.reducer';
 import *  as authReducer from './main/auth/auth-state/auth.reducer';
+import *  as productsReducer from './main/product/state/product.reducer';
 import { Observable } from 'rxjs';
-import * as App  from './state/appState';
+import * as App from './state/appState';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent implements OnInit {
   title = 'ngRx-demo';
-  checkLogin$: Observable<boolean>
-  constructor( private store: Store<App.AppState>){
+  userLogin$
+  constructor(private store: Store<userState.UsersState>) {
 
   }
   ngOnInit(): void {
-    // let checkLogin = this.store.pipe(select(authReducer.selectCheckLogin));
-    // checkLogin.subscribe((data)=> this.checkLogin$ = data)
+    this.getCheckLogin()
   }
-  ngAfterViewUnit(){
-    this.checkLogin$ = this.store.pipe(select(App.selectCheckLogin));
-
-  }
-  ngDoCheck(){
-    
+  getCheckLogin() {
+    this.store.pipe(select(authReducer.selectCheckLogin)).subscribe((updateCheckLogin) => {
+      if (updateCheckLogin !== undefined) {
+        this.userLogin$ = updateCheckLogin
+      } else {
+        this.userLogin$ = 'undefined'
+      }
+      
+    });
   }
 }

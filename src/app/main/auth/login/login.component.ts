@@ -3,7 +3,7 @@ import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms'
 import { Store, select } from '@ngrx/store';
 import * as authActions from '../auth-state/auth.actions'
 import * as authReducer from '../auth-state/auth.reducer'
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { User } from '../auth.model';
 import { AuthService } from '../auth.service';
 import { Router } from '@angular/router';
@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   public users$: Observable<User[]>
-  public isCheckLogin: boolean = false;
+  public isCheckLogin: boolean = false
 
 
   constructor(private authService: AuthService,private _store:Store<authReducer.UsersState>,private router:Router) { }
@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
   }
+ 
 
   onSubmit() {
     const accUser = this.accUser
@@ -41,6 +42,7 @@ export class LoginComponent implements OnInit {
             name: el.name,
             email: el.email,
             password: el.password,
+            avatar: el.avatar
           }));
         }
       })
@@ -54,5 +56,4 @@ export class LoginComponent implements OnInit {
       }
     });
   }
-
 }

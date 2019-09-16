@@ -2,5 +2,6 @@ export class User {
     id?: number;
     email: string;
     password: any;
-    name: string
+    name: string;
+    avatar?: string
 }

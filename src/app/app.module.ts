@@ -22,7 +22,7 @@ import { appReducer } from './state/appState';
     BrowserAnimationsModule,
     HttpClientModule,
     EffectsModule.forRoot([]),
-    StoreModule.forRoot({app: appReducer}),
+    StoreModule.forRoot({appReducer}),
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,

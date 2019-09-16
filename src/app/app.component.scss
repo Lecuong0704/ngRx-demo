@@ -2,3 +2,60 @@
     // background-color: #f2f0f1;
     min-height: 101vh
 }
+nav{
+    height:54px;
+}
+.user-login{
+    display: inline-block;
+    height: 54px;
+    .link-login{
+        line-height: 54px;
+    }
+    .user{
+        position: relative;
+        &:hover .option-user{
+            height: 80px;
+        }
+
+    .user-avatar{
+        padding: 0 5px 0 10px ;
+        img{
+            margin: 9px 0;
+            height: 36px;
+            border-radius:50%;
+        }
+    }
+    .user-name{
+        p{
+            line-height: 54px;
+            margin:0;
+        }
+    }
+    .option-user{
+        height: 0;
+        position: absolute;
+        z-index: 2;
+        top: 54px;
+        right: 0;
+        background: #343a40da;
+        border-radius: 0 0 8px 8px;
+        transition-duration: 0.7s;
+        overflow: hidden;
+        ul{
+            list-style-type: none;
+            padding-right: 51px;
+            li{
+                a{
+                    font-weight: 500;
+                    text-decoration: none;
+                    color: #fff;
+                    &:hover{
+                        color: #28a745;
+                    }
+                }
+            }
+        }
+    }
+
+    }
+}
