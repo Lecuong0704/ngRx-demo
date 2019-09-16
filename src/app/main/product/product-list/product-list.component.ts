@@ -42,8 +42,6 @@ export class ProductListComponent implements OnInit {
   }
   public confirmDeleteProduct(product, index){
     let productSelect = document.querySelector(`#product${index}`);
-    console.log('productSelect',productSelect);
-    
     productSelect.classList.add('hinge');
     setTimeout(()=>{
       productSelect.classList.add('d-none')

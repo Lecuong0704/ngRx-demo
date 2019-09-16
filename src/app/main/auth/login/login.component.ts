@@ -44,12 +44,13 @@ export class LoginComponent implements OnInit {
           }));
         }
       })
-      
       if (this.isCheckLogin) {
-        console.log('đăng nhập thành công');
-        // this.router.navigate(['/']) 
+        const cf = confirm('Bạn đã đăng nhập thanh công! Quay lại trang chủ?')
+        if(cf){
+          this.router.navigate(['/'])
+        }
       } else {
-        console.log('đăng nhập thất bại');
+        alert('Tài khoản hoặc mật khẩu không đúng');
       }
     });
   }
